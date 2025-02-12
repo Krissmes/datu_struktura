@@ -67,6 +67,11 @@ class List:
     def pop_cool(self, indekss):
         print("majasdarbs")
 
+    def switch(self, indekss1, indekss2):
+        for
+
+
+
 
 
 
@@ -83,3 +88,4 @@ saraksts.read()
 saraksts.sakums.read()
 print("=====")
 saraksts.sakums.read()
+
