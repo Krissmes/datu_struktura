@@ -68,7 +68,18 @@ class List:
         print("majasdarbs")
 
     def switch(self, indekss1, indekss2):
-        for
+        elements1 = self.sakums
+        for x in range(indekss1):
+            elements1 = elements1.next
+            print(elements1)
+        
+        elements2 = self.sakums
+        for x in range(indekss2):
+            elements2 = elements2.next
+            print(elements2)
+
+        elements1.info, elements2.info = elements2.info, elements1.info
+        
 
 
 
@@ -89,3 +100,6 @@ saraksts.sakums.read()
 print("=====")
 saraksts.sakums.read()
 
+saraksts.switch(1,4)
+
+saraksts.read()
