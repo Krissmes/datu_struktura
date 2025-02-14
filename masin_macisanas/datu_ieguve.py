@@ -6,8 +6,8 @@ import csv
 import time
 
 URL = "https://www.ss.lv/lv/transport/cars/today-5/sell/"
-DATI = "masinmacisanas/dati/"
-LAPAS = "masinmacisanas/lapas/"
+DATI = "dati/"
+LAPAS = "lapas/"
 
 def saglaba_lapu(url, nosaukums):
     iegutais = requests.get(url)
@@ -44,12 +44,41 @@ def dabut_info(lapa):
         auto = {}
         auto['sludinajuma_saite'] = lauki[1].find('a')['href']
         auto['bilde'] = lauki[1].find('img')['src']
+
+        saraksts = lauki[3].contents
+        if len(saraksts)==3:
+            auto['marka'] = saraksts[0]
+            auto['modelis'] = saraksts[2]
+        else:
+            try:
+                auto['marka'] = list(saraksts[0].children)[0]
+                auto['modelis'] = list(saraksts[0].children)[2]
+            except:
+                auto['marka'] = saraksts[0]
+                auto['modelis'] = '-'
+
+        try:
+            saraksts_gads_tag =  lauki[4].contents
+            saraksts_gads_str = [str(item_tag) for item_tag in saraksts_gads_tag]
+            auto['gads'] = int(saraksts_gads_str[0])
+            
+        except:
+            saraksts_gads_tag =  lauki[4].contents
+            saraksts_gads_str = [str(item_tag) for item_tag in saraksts_gads_tag]
+            auto['gads'] = int(str(saraksts_gads_str[0][3:-4]))
+
+        saraksts_braukums = lauki[6].contents
+        
+
+
+
+
         dati.append(auto)
     return dati
 
 def saglaba_datus(dati):
     with open(DATI+"sslv.csv", "w", encoding = "utf-8") as f:
-        lauku_nosaukumi = ['sludinajuma_saite', 'bilde']
+        lauku_nosaukumi = ['sludinajuma_saite', 'bilde', 'marka', 'modelis', 'gads', 'nobraukums']
         w = csv.DictWriter(f, fieldnames=lauku_nosaukumi)
         w.writeheader()
         for auto in dati:
@@ -65,7 +94,7 @@ def dabut_info_daudz(skaits):
         visi_dati += dati
     return visi_dati
 
-saglaba_visas_lapas(20)
+# saglaba_visas_lapas(20)
 info = dabut_info_daudz(20)
 saglaba_datus(info)
     
