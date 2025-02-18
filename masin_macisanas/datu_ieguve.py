@@ -9,6 +9,31 @@ URL = "https://www.ss.lv/lv/transport/cars/today-5/sell/"
 DATI = "dati/"
 LAPAS = "lapas/"
 
+#kkadas funkcijas
+def vai_ir_k(subject):
+    if isinstance(subject, ):
+        for item in subject:
+            if isinstance(item, str) and "kst" in item.lower():
+                print(1)
+            else:
+                if isinstance(item, list) and "kst" in item.lower():
+                    print(12345)
+                else:
+                    print("afngsebkbgksgbsk;gbgba")
+
+
+
+
+
+
+
+
+
+#kkadas funkcijas beigas
+
+
+
+
 def saglaba_lapu(url, nosaukums):
     iegutais = requests.get(url)
     print(iegutais.status_code)
@@ -18,6 +43,8 @@ def saglaba_lapu(url, nosaukums):
     return
 
 # saglaba_lapu(URL, LAPAS+"pirma.html")
+
+
 
 
 def saglaba_visas_lapas(skaits):
@@ -66,9 +93,14 @@ def dabut_info(lapa):
             saraksts_gads_tag =  lauki[4].contents
             saraksts_gads_str = [str(item_tag) for item_tag in saraksts_gads_tag]
             auto['gads'] = int(str(saraksts_gads_str[0][3:-4]))
-
-        saraksts_braukums = lauki[6].contents
         
+        
+        saraksts_braukums = lauki[6].contents
+            
+    
+        
+        print(saraksts_braukums)
+        vai_ir_k(saraksts_braukums)
 
 
 
