@@ -13,12 +13,13 @@ LAPAS = "lapas/"
 def vai_ir_k(subject):
     
     for item in subject:
+        subject.string()
         if isinstance(item, str) and "kst" in item.lower():
             print(1)
         else:
             if isinstance(item, list) and "kst" in item.lower():
                 print(12345555555555555555555555555555555555555555)
-            if subject == "":
+            if subject == "['-']":
                 print(1234555555555555555555555555555555555555555555555555555555555555555555555555555555555555)
             else:
                 print("afngsebkbgksgbsk;gbgba")
