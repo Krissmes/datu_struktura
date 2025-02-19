@@ -11,15 +11,17 @@ LAPAS = "lapas/"
 
 #kkadas funkcijas
 def vai_ir_k(subject):
-    if isinstance(subject, ):
-        for item in subject:
-            if isinstance(item, str) and "kst" in item.lower():
-                print(1)
+    
+    for item in subject:
+        if isinstance(item, str) and "kst" in item.lower():
+            print(1)
+        else:
+            if isinstance(item, list) and "kst" in item.lower():
+                print(12345555555555555555555555555555555555555555)
+            if subject == "":
+                print(1234555555555555555555555555555555555555555555555555555555555555555555555555555555555555)
             else:
-                if isinstance(item, list) and "kst" in item.lower():
-                    print(12345)
-                else:
-                    print("afngsebkbgksgbsk;gbgba")
+                print("afngsebkbgksgbsk;gbgba")
 
 
 
